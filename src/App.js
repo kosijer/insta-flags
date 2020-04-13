@@ -7,7 +7,7 @@ function App() {
   const [selectedFlag, setSelectedFlag] = useState({});
   const [search, setSearch] = useState("");
   console.log("search", flags);
-  const windowHeight = window.innerHeight - 80;
+  const windowHeight = window.innerHeight - 110;
   function generateFlage(flag) {
     setSelectedFlag(flag);
     setShowFlag(true);
