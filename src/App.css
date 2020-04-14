@@ -53,6 +53,7 @@
 .container span {
   font-size: 150px;
   display: flex;
+  margin-top: -10px;
 }
 .container p {
   position: absolute;
