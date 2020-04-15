@@ -48,7 +48,9 @@ function App() {
         </>
       ) : (
         <div style={styles.container} className="container">
-          <span onClick={() => setShowFlag(false)}>{selectedFlag.emoji}</span>
+          <span className="flag" onClick={() => setShowFlag(false)}>
+            {selectedFlag.emoji}
+          </span>
           <p>{selectedFlag.name}</p>
         </div>
       )}

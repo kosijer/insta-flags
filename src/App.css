@@ -50,7 +50,7 @@
   align-items: center;
   justify-content: center;
 }
-.container span {
+.container .flag {
   font-size: 150px;
   display: flex;
   margin-top: -10px;
