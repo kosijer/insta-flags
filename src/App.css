@@ -72,3 +72,13 @@ input {
   left: 0;
   padding: 2%;
 }
+
+textarea {
+  font-size: 13px;
+  margin: 3%;
+  position: fixed;
+  width: 90%;
+  bottom: 0;
+  left: 0;
+  padding: 2%;
+}

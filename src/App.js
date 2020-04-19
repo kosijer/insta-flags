@@ -1,16 +1,31 @@
 import React, { useState } from "react";
-import { flags } from "./data.js";
+import { flags } from "./data/data.js";
+import { hashtags } from "./data/hashtags";
 import "./App.css";
 
 function App() {
   const [showFlag, setShowFlag] = useState(false);
   const [selectedFlag, setSelectedFlag] = useState({});
   const [search, setSearch] = useState("");
-  console.log("search", flags);
+
   const windowHeight = window.innerHeight - 110;
   function generateFlage(flag) {
     setSelectedFlag(flag);
     setShowFlag(true);
+  }
+
+  function getTags() {
+    const uniqueTags = hashtags.filter((v, i, a) => a.indexOf(v) === i);
+
+    const shuffled = uniqueTags.sort(() => {
+      return 0.5 - Math.random();
+    });
+    const randomTags = shuffled.slice(0, 30);
+    return randomTags
+      .map((tag) => {
+        return `#${tag}`;
+      })
+      .join(" ");
   }
 
   const styles = {
@@ -30,7 +45,8 @@ function App() {
             }}
             type="text"
           />
-          {Object.keys(flags).map((flagcode) => {
+          <textarea>{getTags()}</textarea>
+          {Object.keys(flags).map((flagcode, i) => {
             if (
               flags[flagcode].name.toLowerCase().includes(search.toLowerCase())
             ) {
@@ -38,6 +54,7 @@ function App() {
                 <button
                   className="flagButton"
                   onClick={() => generateFlage(flags[flagcode])}
+                  key={i}
                 >
                   {flags[flagcode].emoji} - {flags[flagcode].name}
                 </button>
