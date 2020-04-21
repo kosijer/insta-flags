@@ -16,7 +16,7 @@ function App() {
 
   function getTags() {
     const uniqueTags = hashtags.filter((v, i, a) => a.indexOf(v) === i);
-    console.log(uniqueTags.join("', '").toLowerCase());
+    console.log(`'${uniqueTags.join("', '").toLowerCase()}'`);
 
     const shuffled = uniqueTags.sort(() => {
       return 0.5 - Math.random();
