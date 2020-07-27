@@ -21,7 +21,12 @@ function App() {
     const shuffled = uniqueTags.sort(() => {
       return 0.5 - Math.random();
     });
-    const randomTags = shuffled.slice(0, 30);
+    const mandatoryTags = [
+      "zemljaporekla",
+      "zemljaporeklanaengleskom",
+      "zanrilinaziv",
+    ];
+    const randomTags = [...mandatoryTags, ...shuffled.slice(0, 27)];
     return randomTags
       .map((tag) => {
         return `#${tag}`;
