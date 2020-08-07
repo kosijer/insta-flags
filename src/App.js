@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { flags } from "./data/data.js";
+import { WATCHED } from "./data/watched";
 import { hashtags } from "./data/hashtags";
 import "./App.css";
 
@@ -61,6 +62,7 @@ function App() {
                   className="flagButton"
                   onClick={() => generateFlage(flags[flagcode])}
                   key={i}
+                  style={{ opacity: WATCHED.includes(flagcode) ? 0.5 : 1 }}
                 >
                   {flags[flagcode].emoji} - {flags[flagcode].name}
                 </button>
