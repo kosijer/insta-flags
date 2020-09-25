@@ -26,4 +26,5 @@ export const WATCHED = [
   "AL",
   "GR",
   "JP",
+  "AT",
 ];
