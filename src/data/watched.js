@@ -28,4 +28,6 @@ export const WATCHED = [
   "JP",
   "AT",
   "IE",
+  "EE",
+  "CZ",
 ];
