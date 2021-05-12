@@ -33,4 +33,6 @@ export const WATCHED = [
   "SY",
   "PT",
   "NG",
+  "KP",
+  "IN",
 ];
