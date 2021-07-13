@@ -35,4 +35,7 @@ export const WATCHED = [
   "NG",
   "KP",
   "IN",
+  "GE",
+  "VE",
+  "MR"
 ];
