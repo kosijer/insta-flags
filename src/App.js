@@ -16,6 +16,14 @@ function App() {
     setShowFlag(true);
   }
 
+  function giveIdea() {
+    const unwatched = Object.keys(flags).filter(
+      (country) => !WATCHED.includes(country)
+    );
+    var randomCountry = unwatched[Math.floor(Math.random() * unwatched.length)];
+    generateFlage(flags[randomCountry]);
+  }
+
   function getTags() {
     const uniqueTags = hashtags.filter((v, i, a) => a.indexOf(v) === i);
     console.log(`'${uniqueTags.sort().join("', '").toLowerCase()}'`);
@@ -61,6 +69,7 @@ function App() {
             <span onClick={() => setShowWatched(!showWatched)}>
               {showWatched ? "show" : "hide"}
             </span>
+            <span onClick={() => giveIdea()}>idea</span>
           </div>
 
           <textarea>{getTags()}</textarea>
