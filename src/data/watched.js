@@ -37,5 +37,7 @@ export const WATCHED = [
   "IN",
   "GE",
   "VE",
-  "MR"
+  "MR",
+  "AG",
+  "AD"
 ];
