@@ -41,8 +41,21 @@
 
 .flagButton {
   display: flex;
-  font-size: 20px;
-  margin: 30px 0px;
+  font-size: 23px;
+  margin: 10px 5%;
+  width: 90%;
+  background: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  align-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flagButton span {
+  font-size: 230%;
+  padding-right: 10px;
 }
 
 .container {
@@ -98,4 +111,29 @@ textarea {
   font-weight: bold;
   color: white;
   text-shadow: 1px 1px 1px #0000009e;
+}
+
+.links {
+  margin-top: 10%;
+}
+
+.link {
+  display: block;
+  margin: 0 auto 0;
+  width: 90%;
+  text-align: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: black;
+  text-decoration: none;
+  padding: 15px 0;
+}
+
+.link:hover {
+  color: red;
+}
+
+.countries {
+  padding: 10% 0 20%;
 }

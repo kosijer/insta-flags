@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { flags } from "./data/data.js";
+import { links } from "./data/links.js";
 import { WATCHED } from "./data/watched";
 import { hashtags } from "./data/hashtags";
 import "./App.css";
@@ -9,6 +10,8 @@ function App() {
   const [selectedFlag, setSelectedFlag] = useState({});
   const [search, setSearch] = useState("");
   const [showWatched, setShowWatched] = useState(false);
+  const [showLinks, setShowLinks] = useState(false);
+  const textAreaRef = useRef(null);
 
   const windowHeight = window.innerHeight - 110;
   function generateFlage(flag) {
@@ -22,6 +25,12 @@ function App() {
     );
     var randomCountry = unwatched[Math.floor(Math.random() * unwatched.length)];
     generateFlage(flags[randomCountry]);
+  }
+
+  function copyToClipboard(e) {
+    textAreaRef.current.select();
+    document.execCommand("copy");
+    e.target.focus();
   }
 
   function getTags() {
@@ -46,7 +55,7 @@ function App() {
 
   const styles = {
     container: {
-      height: windowHeight,
+      minHeight: windowHeight,
     },
   };
 
@@ -69,27 +78,49 @@ function App() {
             <span onClick={() => setShowWatched(!showWatched)}>
               {showWatched ? "show" : "hide"}
             </span>
+            <span onClick={() => setShowLinks(!showLinks)}>links</span>
             <span onClick={() => giveIdea()}>idea</span>
           </div>
 
-          <textarea>{getTags()}</textarea>
-          {countries.map((flagcode, i) => {
-            if (
-              flags[flagcode].name.toLowerCase().includes(search.toLowerCase())
-            ) {
-              return (
-                <button
-                  className="flagButton"
-                  onClick={() => generateFlage(flags[flagcode])}
-                  key={i}
-                  style={{ opacity: WATCHED.includes(flagcode) ? 0.5 : 1 }}
+          <textarea ref={textAreaRef} onClick={copyToClipboard}>
+            {getTags()}
+          </textarea>
+          {showLinks && (
+            <div className="links">
+              {links.map((link, id) => (
+                <a
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  className="link"
+                  key={id}
+                  href={link}
                 >
-                  {flags[flagcode].emoji} - {flags[flagcode].name}
-                </button>
-              );
-            }
-            return null;
-          })}
+                  {link}
+                </a>
+              ))}
+            </div>
+          )}
+          <div className="countries">
+            {countries.map((flagcode, i) => {
+              if (
+                flags[flagcode].name
+                  .toLowerCase()
+                  .includes(search.toLowerCase())
+              ) {
+                return (
+                  <button
+                    className="flagButton"
+                    onClick={() => generateFlage(flags[flagcode])}
+                    key={i}
+                    style={{ opacity: WATCHED.includes(flagcode) ? 0.5 : 1 }}
+                  >
+                    <span>{flags[flagcode].emoji}</span> {flags[flagcode].name}
+                  </button>
+                );
+              }
+              return null;
+            })}
+          </div>
         </>
       ) : (
         <div style={styles.container} className="container">
