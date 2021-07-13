@@ -65,12 +65,10 @@
 
 input {
   font-size: 13px;
-  margin: 3%;
-  position: fixed;
-  width: 90%;
-  top: 0;
-  left: 0;
   padding: 2%;
+  flex: 1;
+  margin-right: 20px;
+  padding: 10px;
 }
 
 textarea {
@@ -81,4 +79,16 @@ textarea {
   bottom: 0;
   left: 0;
   padding: 2%;
+}
+
+.searchbar {
+  display: flex;
+  margin: 3%;
+  padding: 2%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
 }

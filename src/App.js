@@ -8,6 +8,7 @@ function App() {
   const [showFlag, setShowFlag] = useState(false);
   const [selectedFlag, setSelectedFlag] = useState({});
   const [search, setSearch] = useState("");
+  const [showWatched, setShowWatched] = useState(false);
 
   const windowHeight = window.innerHeight - 110;
   function generateFlage(flag) {
@@ -41,19 +42,29 @@ function App() {
     },
   };
 
+  const countries = showWatched
+    ? Object.keys(flags)
+    : Object.keys(flags).filter((country) => !WATCHED.includes(country));
+
   return (
     <div className="App">
       {!showFlag ? (
         <>
-          <input
-            value={search}
-            onChange={(e) => {
-              setSearch(e.target.value);
-            }}
-            type="text"
-          />
+          <div className="searchbar">
+            <input
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+              type="text"
+            />
+            <span onClick={() => setShowWatched(!showWatched)}>
+              {showWatched ? "show" : "hide"}
+            </span>
+          </div>
+
           <textarea>{getTags()}</textarea>
-          {Object.keys(flags).map((flagcode, i) => {
+          {countries.map((flagcode, i) => {
             if (
               flags[flagcode].name.toLowerCase().includes(search.toLowerCase())
             ) {
