@@ -39,5 +39,6 @@ export const WATCHED = [
   "VE",
   "MR",
   "AG",
-  "AD"
+  "AD",
+  "AW"
 ];
