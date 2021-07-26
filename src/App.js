@@ -19,6 +19,12 @@ function App() {
     setShowFlag(true);
   }
 
+  const numberOfUnwatched = Object.keys(flags).filter(
+    (country) => !WATCHED.includes(country)
+  ).length;
+
+  const numberOfCountries = Object.keys(flags).length;
+
   function giveIdea() {
     const unwatched = Object.keys(flags).filter(
       (country) => !WATCHED.includes(country)
@@ -80,11 +86,17 @@ function App() {
             </span>
             <span onClick={() => setShowLinks(!showLinks)}>links</span>
             <span onClick={() => giveIdea()}>idea</span>
+            <span>
+              {numberOfUnwatched}/{numberOfCountries}
+            </span>
           </div>
 
-          <textarea ref={textAreaRef} onClick={copyToClipboard}>
-            {getTags()}
-          </textarea>
+          <textarea
+            defaultValue={getTags()}
+            readOnly
+            ref={textAreaRef}
+            onClick={copyToClipboard}
+          />
           {showLinks && (
             <div className="links">
               {links.map((link, id) => (
